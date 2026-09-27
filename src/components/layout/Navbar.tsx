@@ -39,18 +39,18 @@ export function Navbar() {
       className={cn(
         "sticky top-0 z-50 w-full transition-all duration-300",
         scrolled
-          ? "bg-white/95 backdrop-blur-md border-b border-[var(--color-border)] shadow-sm"
-          : "bg-white border-b border-[var(--color-border)]"
+          ? "bg-[var(--color-bg)]/90 backdrop-blur-md border-b border-[var(--color-border)] shadow-sm py-2"
+          : "bg-[var(--color-bg)] border-b border-[var(--color-border)] py-4"
       )}
     >
       <div className="container-site">
-        <div className="flex items-center justify-between h-16 gap-4">
+        <div className="flex items-center justify-between h-12 gap-4">
           {/* Logo */}
           <BrandLogo variant="dark" />
 
           {/* Desktop Nav */}
           <nav
-            className="hidden md:flex items-center gap-1"
+            className="hidden md:flex items-center gap-8"
             aria-label="Primary navigation"
           >
             {navLinks.map((link) => (
@@ -58,10 +58,10 @@ export function Navbar() {
                 key={link.href}
                 href={link.href}
                 className={cn(
-                  "px-4 py-2 rounded-lg text-sm font-medium transition-all duration-150",
+                  "text-[10px] font-medium uppercase tracking-[0.2em] transition-all duration-300",
                   pathname === link.href || pathname.startsWith(link.href + "/")
-                    ? "bg-[var(--color-primary)]/10 text-[var(--color-primary)]"
-                    : "text-[var(--color-text-secondary)] hover:text-[var(--color-primary)] hover:bg-[var(--color-primary)]/5"
+                    ? "text-[var(--color-accent)]"
+                    : "text-[var(--color-text)] hover:text-[var(--color-accent)]"
                 )}
               >
                 {link.label}
@@ -70,35 +70,31 @@ export function Navbar() {
           </nav>
 
           {/* Desktop Right Actions */}
-          <div className="hidden md:flex items-center gap-2">
+          <div className="hidden md:flex items-center gap-6">
             <Link
               href="/search"
-              className="p-2 rounded-lg text-[var(--color-muted)] hover:text-[var(--color-primary)] hover:bg-[var(--color-primary)]/5 transition-colors"
+              className="text-[var(--color-text)] hover:text-[var(--color-accent)] transition-colors"
               aria-label="Search products"
             >
-              <Search className="w-4.5 h-4.5" />
+              <Search className="w-4 h-4" />
             </Link>
 
-            {whatsappUrl && (
+            {whatsappUrl ? (
               <a
                 href={whatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 px-4 py-2 rounded-lg bg-[#25D366] text-white text-sm font-medium hover:bg-[#1ebe5d] transition-colors"
+                className="inline-flex items-center justify-center px-5 py-2.5 bg-[var(--color-accent)] text-[var(--color-dark-text)] uppercase tracking-widest text-[10px] font-medium rounded-sm hover:-translate-y-0.5 hover:bg-[var(--color-accent-dark)] transition-all duration-300 ease-out"
                 aria-label="Enquire on WhatsApp"
               >
-                <MessageCircle className="w-4 h-4" />
-                <span>WhatsApp</span>
+                Enquire
               </a>
-            )}
-
-            {!whatsappUrl && (
+            ) : (
               <Link
                 href="/contact"
-                className="flex items-center gap-2 px-4 py-2 rounded-lg bg-[var(--color-primary)] text-white text-sm font-medium hover:bg-[var(--color-primary-dark)] transition-colors"
+                className="inline-flex items-center justify-center px-5 py-2.5 bg-[var(--color-dark-section)] text-[var(--color-dark-text)] uppercase tracking-widest text-[10px] font-medium rounded-sm hover:-translate-y-0.5 hover:bg-black transition-all duration-300 ease-out"
               >
-                <Phone className="w-4 h-4" />
-                <span>Contact Us</span>
+                Contact
               </Link>
             )}
           </div>
@@ -107,10 +103,10 @@ export function Navbar() {
           <div className="flex md:hidden items-center gap-2">
             <Link
               href="/search"
-              className="p-2 text-[var(--color-muted)] hover:text-[var(--color-primary)] transition-colors"
+              className="p-2 text-[var(--color-text)] hover:text-[var(--color-accent)] transition-colors"
               aria-label="Search"
             >
-              <Search className="w-5 h-5" />
+              <Search className="w-4 h-4" />
             </Link>
             <MobileNav />
           </div>

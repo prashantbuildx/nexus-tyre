@@ -26,40 +26,32 @@ function getCategoryCount(catId: string) {
 // ─── Solution areas for homepage ───────────────────────────────────────────────
 const solutions = [
   {
-    icon: <Truck className="w-6 h-6" />,
+    icon: <Truck className="w-5 h-5" />,
     title: "EV Mobility",
     description:
       "E-rickshaws and electric scooties for passenger transport, cargo, and last-mile delivery.",
     href: "/categories/e-rickshaw",
-    color: "from-indigo-50 to-purple-50 border-indigo-100",
-    iconColor: "text-indigo-600 bg-indigo-100",
   },
   {
-    icon: <Package className="w-6 h-6" />,
+    icon: <Package className="w-5 h-5" />,
     title: "Tyre & Wheel Solutions",
     description:
       "Tyres, tubes, and rims for e-rickshaws, e-scooties, and light commercial vehicles.",
     href: "/categories/tyres",
-    color: "from-amber-50 to-yellow-50 border-amber-100",
-    iconColor: "text-amber-600 bg-amber-100",
   },
   {
-    icon: <Battery className="w-6 h-6" />,
+    icon: <Battery className="w-5 h-5" />,
     title: "Battery & Charging",
     description:
       "EV batteries and chargers for electric three-wheelers and two-wheelers.",
     href: "/categories/ev-batteries",
-    color: "from-green-50 to-emerald-50 border-green-100",
-    iconColor: "text-green-600 bg-green-100",
   },
   {
-    icon: <Zap className="w-6 h-6" />,
+    icon: <Zap className="w-5 h-5" />,
     title: "Industrial Equipment",
     description:
       "Garbage collection vehicles, containers, vending machines, and industrial incinerators.",
     href: "/categories/garbage-solutions",
-    color: "from-blue-50 to-sky-50 border-blue-100",
-    iconColor: "text-blue-600 bg-blue-100",
   },
 ];
 
@@ -68,118 +60,93 @@ export default function HomePage() {
     <>
       {/* ─── Hero ─────────────────────────────────────────────────────────────── */}
       <section
-        className="relative overflow-hidden"
-        style={{ background: "var(--color-dark)" }}
+        className="relative min-h-[90vh] flex items-center bg-[var(--color-bg)] border-b border-[var(--color-border)]"
         aria-labelledby="hero-heading"
       >
-        {/* Background texture */}
-        <div
-          className="absolute inset-0 opacity-[0.04]"
-          style={{
-            backgroundImage:
-              "radial-gradient(circle at 2px 2px, white 1px, transparent 0)",
-            backgroundSize: "40px 40px",
-          }}
-          aria-hidden="true"
-        />
+        <div className="container-site relative z-10 py-20 md:py-32 w-full">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+            
+            {/* Left Column: Text */}
+            <div className="lg:col-span-6 space-y-8 animate-fade-in-up">
+              {/* Eyebrow */}
+              <div className="flex items-center gap-4">
+                <span className="w-12 h-px bg-[var(--color-border-strong)]" aria-hidden="true" />
+                <span className="text-[10px] tracking-[0.2em] uppercase font-medium text-[var(--color-text-muted)]">
+                  EV • MOBILITY • INDUSTRIAL
+                </span>
+              </div>
 
-        {/* Gradient accents */}
-        <div
-          className="absolute top-0 right-0 w-1/2 h-full opacity-10 pointer-events-none"
-          style={{
-            background:
-              "radial-gradient(ellipse at right top, var(--color-accent) 0%, transparent 70%)",
-          }}
-          aria-hidden="true"
-        />
-        <div
-          className="absolute bottom-0 left-0 w-1/3 h-1/2 opacity-10 pointer-events-none"
-          style={{
-            background:
-              "radial-gradient(ellipse at left bottom, var(--color-primary-light) 0%, transparent 70%)",
-          }}
-          aria-hidden="true"
-        />
-
-        <div className="container-site relative py-20 md:py-28 lg:py-36">
-          <div className="max-w-3xl">
-            {/* Eyebrow */}
-            <div className="flex items-center gap-2 mb-6">
-              <span
-                className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-semibold tracking-wider uppercase"
-                style={{
-                  background: "rgba(255,206,72,0.15)",
-                  color: "var(--color-accent)",
-                  border: "1px solid rgba(255,206,72,0.3)",
-                }}
+              {/* Headline */}
+              <h1
+                id="hero-heading"
+                className="text-6xl md:text-8xl font-serif text-[var(--color-text)] leading-[0.95] tracking-tight"
               >
-                <span className="w-1.5 h-1.5 rounded-full bg-[var(--color-accent)]" aria-hidden="true" />
-                EV • MOBILITY • INDUSTRIAL
-              </span>
+                Solutions <br />
+                <span className="italic text-[var(--color-text-muted)]">That Keep</span><br />
+                Mobility Moving
+              </h1>
+
+              {/* Supporting copy */}
+              <p className="text-lg text-[var(--color-text-muted)] leading-relaxed max-w-md pt-4">
+                Explore commercial-grade e-rickshaws, electric scooties, heavy-duty tyres, batteries, and municipal equipment from Nexus Tyre.
+              </p>
+
+              {/* CTAs */}
+              <div className="flex flex-wrap gap-6 pt-4">
+                <Link
+                  href="/products"
+                  className="inline-flex items-center gap-3 px-8 py-3.5 bg-[var(--color-accent)] text-[var(--color-dark-text)] uppercase tracking-widest text-xs font-medium rounded-sm hover:-translate-y-0.5 hover:bg-[var(--color-accent-dark)] transition-all duration-300 ease-out"
+                >
+                  Explore Collection
+                  <ArrowRight className="w-4 h-4" />
+                </Link>
+                <Link
+                  href="/contact"
+                  className="inline-flex items-center gap-3 px-8 py-3.5 border border-[var(--color-border-strong)] text-[var(--color-text)] uppercase tracking-widest text-xs font-medium rounded-sm hover:-translate-y-0.5 hover:bg-[var(--color-surface)] transition-all duration-300 ease-out"
+                >
+                  Contact Us
+                </Link>
+              </div>
             </div>
 
-            {/* Headline */}
-            <h1
-              id="hero-heading"
-              className="text-display text-white mb-6 leading-tight"
-            >
-              Solutions That Keep{" "}
-              <span style={{ color: "var(--color-accent)" }}>
-                Mobility Moving.
-              </span>
-            </h1>
-
-            {/* Supporting copy */}
-            <p className="text-lg md:text-xl text-white/70 mb-10 leading-relaxed max-w-2xl">
-              Explore e-rickshaws, electric scooties, tyres, batteries,
-              chargers, and industrial equipment from Nexus Tyre.
-            </p>
-
-            {/* CTAs */}
-            <div className="flex flex-wrap gap-4">
-              <Link
-                href="/products"
-                className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl font-semibold text-base transition-all"
-                style={{
-                  background: "var(--color-accent)",
-                  color: "var(--color-primary)",
-                }}
-              >
-                Explore Products
-                <ArrowRight className="w-5 h-5" />
-              </Link>
-              <Link
-                href="/contact"
-                className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl font-semibold text-base border border-white/20 text-white hover:bg-white/10 transition-colors"
-              >
-                Contact Nexus Tyre
-              </Link>
+            {/* Right Column: Hero Graphic (Asymmetric Layout) */}
+            <div className="lg:col-span-6 lg:col-start-7 lg:pl-12 relative animate-fade-in-up" style={{ animationDelay: '200ms' }}>
+              <div className="relative w-full aspect-[4/5] bg-[var(--color-surface)] border border-[var(--color-border)] overflow-hidden">
+                <div className="absolute inset-0 flex items-center justify-center">
+                  {/* Text-based stylized placeholder */}
+                  <div className="text-[10rem] font-serif text-[var(--color-text)] opacity-[0.03] uppercase tracking-tighter leading-none -rotate-90 origin-center whitespace-nowrap">
+                    Nexus
+                  </div>
+                </div>
+              </div>
+              <div className="absolute -bottom-8 -left-8 w-1/2 aspect-square bg-[var(--color-surface-soft)] border border-[var(--color-border)] hidden md:block"></div>
             </div>
+
           </div>
         </div>
       </section>
 
       {/* ─── Category Cards ───────────────────────────────────────────────────── */}
-      <section className="section-padding bg-[var(--color-background)]" aria-labelledby="categories-heading">
+      <section className="py-24 md:py-32 bg-[var(--color-surface)] border-b border-[var(--color-border)]" aria-labelledby="categories-heading">
         <div className="container-site">
-          <div className="flex items-end justify-between mb-10 gap-4">
-            <div>
-              <p className="text-sm font-semibold text-[var(--color-accent)] uppercase tracking-wider mb-2">
-                Browse by Category
-              </p>
-              <h2 id="categories-heading" className="text-h2 text-[var(--color-text)]">
+          <div className="flex flex-col md:flex-row items-end justify-between mb-16 gap-8">
+            <div className="space-y-4 max-w-xl">
+              <span className="text-[10px] tracking-[0.2em] uppercase font-medium text-[var(--color-text-muted)]">
+                Browse Collection
+              </span>
+              <h2 id="categories-heading" className="text-4xl md:text-5xl font-serif text-[var(--color-text)] tracking-tight">
                 Product Categories
               </h2>
             </div>
             <Link
               href="/categories"
-              className="hidden sm:flex items-center gap-1 text-sm font-semibold text-[var(--color-primary)] hover:gap-2 transition-all shrink-0"
+              className="hidden md:inline-flex items-center gap-2 text-xs uppercase tracking-widest font-medium text-[var(--color-text)] hover:text-[var(--color-accent)] hover:gap-3 transition-all shrink-0"
             >
-              View all <ChevronRight className="w-4 h-4" />
+              View all <ArrowRight className="w-3 h-3" />
             </Link>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {featuredCategories.map((cat) => (
               <CategoryCard
                 key={cat.id}
@@ -190,12 +157,12 @@ export default function HomePage() {
             ))}
           </div>
 
-          <div className="flex sm:hidden mt-6 justify-center">
+          <div className="flex md:hidden mt-12 justify-center border-t border-[var(--color-border)] pt-8">
             <Link
               href="/categories"
-              className="flex items-center gap-1 px-4 py-2 rounded-lg border border-[var(--color-border)] text-sm font-semibold text-[var(--color-primary)]"
+              className="inline-flex items-center gap-2 text-xs uppercase tracking-widest font-medium text-[var(--color-text)] hover:text-[var(--color-accent)]"
             >
-              View all categories <ChevronRight className="w-4 h-4" />
+              View all categories <ArrowRight className="w-3 h-3" />
             </Link>
           </div>
         </div>
@@ -203,51 +170,53 @@ export default function HomePage() {
 
       {/* ─── Solutions ────────────────────────────────────────────────────────── */}
       <section
-        className="section-padding"
-        style={{ background: "var(--color-surface)" }}
+        className="py-24 md:py-32 bg-[var(--color-bg)] border-b border-[var(--color-border)]"
         aria-labelledby="solutions-heading"
       >
         <div className="container-site">
-          <div className="text-center mb-12">
-            <p className="text-sm font-semibold text-[var(--color-accent)] uppercase tracking-wider mb-2">
-              What We Offer
-            </p>
-            <h2 id="solutions-heading" className="text-h2 text-[var(--color-text)] mb-4">
-              Product Solutions
-            </h2>
-            <p className="text-[var(--color-muted)] max-w-xl mx-auto">
-              From electric vehicles to industrial waste management —
-              Nexus Tyre supplies across mobility and industrial categories.
-            </p>
-          </div>
+          <div className="flex flex-col lg:flex-row gap-16 lg:gap-24 items-start">
+            <div className="lg:w-1/3 space-y-6 lg:sticky lg:top-32">
+              <span className="text-[10px] tracking-[0.2em] uppercase font-medium text-[var(--color-text-muted)]">
+                What We Offer
+              </span>
+              <h2 id="solutions-heading" className="text-4xl md:text-5xl font-serif text-[var(--color-text)] tracking-tight">
+                Product Solutions
+              </h2>
+              <p className="text-lg text-[var(--color-text-muted)] leading-relaxed">
+                From electric vehicles to industrial waste management — Nexus Tyre supplies across mobility and industrial categories.
+              </p>
+            </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-            {solutions.map((sol) => (
-              <Link
-                key={sol.title}
-                href={sol.href}
-                className={`group flex gap-4 p-6 rounded-2xl border bg-gradient-to-br transition-all hover:shadow-[var(--shadow-card-hover)] hover:-translate-y-1 ${sol.color}`}
-                aria-label={sol.title}
-              >
-                <div
-                  className={`w-12 h-12 rounded-xl flex-shrink-0 flex items-center justify-center ${sol.iconColor}`}
-                  aria-hidden="true"
+            <div className="lg:w-2/3 grid grid-cols-1 sm:grid-cols-2 gap-px bg-[var(--color-border)]">
+              {solutions.map((sol) => (
+                <Link
+                  key={sol.title}
+                  href={sol.href}
+                  className="group flex flex-col gap-6 p-10 bg-[var(--color-bg)] hover:bg-[var(--color-surface-soft)] transition-colors duration-500"
+                  aria-label={sol.title}
                 >
-                  {sol.icon}
-                </div>
-                <div className="flex-1 min-w-0">
-                  <h3 className="font-bold text-[var(--color-text)] mb-1.5 text-base group-hover:text-[var(--color-primary)] transition-colors">
-                    {sol.title}
-                  </h3>
-                  <p className="text-sm text-[var(--color-muted)] leading-relaxed">
-                    {sol.description}
-                  </p>
-                  <span className="inline-flex items-center gap-1 mt-3 text-sm font-semibold text-[var(--color-primary)] group-hover:gap-2 transition-all">
-                    Explore <ArrowRight className="w-3.5 h-3.5" />
-                  </span>
-                </div>
-              </Link>
-            ))}
+                  <div
+                    className="text-[var(--color-text-muted)] group-hover:text-[var(--color-accent)] transition-colors duration-500"
+                    aria-hidden="true"
+                  >
+                    {sol.icon}
+                  </div>
+                  <div className="flex-1 space-y-3">
+                    <h3 className="text-xl font-serif text-[var(--color-text)]">
+                      {sol.title}
+                    </h3>
+                    <p className="text-sm text-[var(--color-text-muted)] leading-relaxed">
+                      {sol.description}
+                    </p>
+                  </div>
+                  <div className="pt-4 mt-auto border-t border-[var(--color-border)]">
+                    <span className="inline-flex items-center gap-2 text-[10px] uppercase tracking-[0.2em] font-medium text-[var(--color-text)] group-hover:text-[var(--color-accent)] transition-colors">
+                      Explore <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
+                    </span>
+                  </div>
+                </Link>
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -255,24 +224,24 @@ export default function HomePage() {
       {/* ─── Featured Products ────────────────────────────────────────────────── */}
       {featuredProducts.length > 0 && (
         <section
-          className="section-padding bg-[var(--color-background)]"
+          className="py-24 md:py-32 bg-[var(--color-bg)] border-b border-[var(--color-border)]"
           aria-labelledby="featured-heading"
         >
           <div className="container-site">
-            <div className="flex items-end justify-between mb-10 gap-4">
-              <div>
-                <p className="text-sm font-semibold text-[var(--color-accent)] uppercase tracking-wider mb-2">
-                  Selected Products
-                </p>
-                <h2 id="featured-heading" className="text-h2 text-[var(--color-text)]">
+            <div className="flex flex-col md:flex-row items-end justify-between mb-16 gap-8">
+              <div className="space-y-4 max-w-xl">
+                <span className="text-[10px] tracking-[0.2em] uppercase font-medium text-[var(--color-text-muted)]">
+                  Selected Items
+                </span>
+                <h2 id="featured-heading" className="text-4xl md:text-5xl font-serif text-[var(--color-text)] tracking-tight">
                   Featured Products
                 </h2>
               </div>
               <Link
                 href="/products"
-                className="hidden sm:flex items-center gap-1 text-sm font-semibold text-[var(--color-primary)] hover:gap-2 transition-all shrink-0"
+                className="hidden md:inline-flex items-center gap-2 text-xs uppercase tracking-widest font-medium text-[var(--color-text)] hover:text-[var(--color-accent)] hover:gap-3 transition-all shrink-0"
               >
-                Browse all <ChevronRight className="w-4 h-4" />
+                Browse all <ArrowRight className="w-3 h-3" />
               </Link>
             </div>
 
@@ -282,13 +251,12 @@ export default function HomePage() {
               columns={3}
             />
 
-            <div className="flex justify-center mt-10">
+            <div className="flex justify-center mt-16 pt-8 border-t border-[var(--color-border)]">
               <Link
                 href="/products"
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-[var(--color-primary)] text-white font-semibold text-sm hover:bg-[var(--color-primary-dark)] transition-colors"
+                className="inline-flex items-center gap-3 px-8 py-3 border border-[var(--color-border-strong)] text-[var(--color-text)] uppercase tracking-widest text-xs font-medium rounded-sm hover:-translate-y-0.5 hover:bg-[var(--color-surface)] transition-all duration-300 ease-out"
               >
                 Browse All Products
-                <ArrowRight className="w-4 h-4" />
               </Link>
             </div>
           </div>
@@ -297,21 +265,20 @@ export default function HomePage() {
 
       {/* ─── Why Nexus Tyre ──────────────────────────────────────────────────── */}
       <section
-        className="section-padding"
-        style={{ background: "var(--color-surface)" }}
+        className="py-24 md:py-32 bg-[var(--color-surface)] border-b border-[var(--color-border)]"
         aria-labelledby="why-heading"
       >
         <div className="container-site">
-          <div className="text-center mb-12">
-            <p className="text-sm font-semibold text-[var(--color-accent)] uppercase tracking-wider mb-2">
+          <div className="max-w-3xl mx-auto text-center mb-16 space-y-6">
+            <span className="text-[10px] tracking-[0.2em] uppercase font-medium text-[var(--color-text-muted)]">
               Why Nexus Tyre
-            </p>
-            <h2 id="why-heading" className="text-h2 text-[var(--color-text)]">
+            </span>
+            <h2 id="why-heading" className="text-4xl md:text-5xl font-serif text-[var(--color-text)] tracking-tight leading-none">
               Your Mobility & Industrial Partner
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
             {[
               {
                 title: "Wide Product Range",
@@ -322,29 +289,29 @@ export default function HomePage() {
                 desc: "Contact us directly via phone or WhatsApp for pricing and current availability.",
               },
               {
-                title: "Detailed Product Information",
+                title: "Detailed Information",
                 desc: "Browse specifications, features, and product categories before making an enquiry.",
               },
               {
                 title: "Mobility & Industrial",
                 desc: "From electric three-wheelers to industrial incinerators — a diverse product catalogue.",
               },
-            ].map((item) => (
+            ].map((item, i) => (
               <div
                 key={item.title}
-                className="flex flex-col p-6 rounded-2xl border border-[var(--color-border)] bg-[var(--color-background)]"
+                className="flex flex-col space-y-6"
               >
-                <div
-                  className="w-2 h-8 rounded-full mb-4"
-                  style={{ background: "var(--color-accent)" }}
-                  aria-hidden="true"
-                />
-                <h3 className="font-bold text-[var(--color-text)] mb-2">
-                  {item.title}
-                </h3>
-                <p className="text-sm text-[var(--color-muted)] leading-relaxed">
-                  {item.desc}
-                </p>
+                <div className="text-sm font-serif italic text-[var(--color-text-muted)]">
+                  0{i + 1}
+                </div>
+                <div className="space-y-3 pt-6 border-t border-[var(--color-border)]">
+                  <h3 className="text-xl font-serif text-[var(--color-text)] tracking-tight">
+                    {item.title}
+                  </h3>
+                  <p className="text-sm text-[var(--color-text-muted)] leading-relaxed">
+                    {item.desc}
+                  </p>
+                </div>
               </div>
             ))}
           </div>
@@ -352,11 +319,9 @@ export default function HomePage() {
       </section>
 
       {/* ─── Contact CTA ─────────────────────────────────────────────────────── */}
-      <section className="section-padding-sm bg-[var(--color-background)]" aria-label="Contact Nexus Tyre">
-        <div className="container-site">
-          <ContactCTA />
-        </div>
-      </section>
+      <div className="bg-[var(--color-bg)]">
+        <ContactCTA />
+      </div>
     </>
   );
 }

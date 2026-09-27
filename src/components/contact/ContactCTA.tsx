@@ -29,71 +29,49 @@ export function ContactCTA({
   return (
     <section
       className={cn(
-        "rounded-2xl p-8 md:p-12",
-        variant === "dark" && "bg-[var(--color-dark)]",
-        variant === "light" && "bg-[var(--color-surface)] border border-[var(--color-border)]",
-        variant === "accent" && "bg-[var(--color-primary)]",
+        "p-12 md:p-24 flex flex-col items-center text-center max-w-4xl mx-auto space-y-12 border-t border-[var(--color-border)]",
         className
       )}
       aria-labelledby="contact-cta-heading"
     >
-      <div className="max-w-2xl">
+      <div className="space-y-6">
+        <span className="text-[10px] tracking-[0.2em] uppercase font-medium text-[var(--color-text-muted)]">
+          Commercial Inquiries
+        </span>
         <h2
           id="contact-cta-heading"
-          className={cn(
-            "text-h2 mb-3",
-            variant === "light" ? "text-[var(--color-text)]" : "text-white"
-          )}
+          className="text-4xl md:text-6xl font-serif tracking-tight leading-none text-[var(--color-text)]"
         >
           {title}
         </h2>
-        <p
-          className={cn(
-            "mb-8 leading-relaxed",
-            variant === "light"
-              ? "text-[var(--color-muted)]"
-              : "text-white/70"
-          )}
-        >
+        <p className="text-base md:text-lg text-[var(--color-text-muted)] max-w-xl mx-auto leading-relaxed">
           {desc}
         </p>
+      </div>
+      
+      <div className="flex flex-col sm:flex-row flex-wrap gap-4 justify-center items-center">
+        <a
+          href={whatsappUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center justify-center px-8 py-3 bg-[var(--color-accent)] text-[var(--color-dark-text)] uppercase tracking-widest text-xs font-medium rounded-sm hover:-translate-y-0.5 hover:bg-[var(--color-accent-dark)] transition-all duration-300 ease-out"
+        >
+          Enquire on WhatsApp &rarr;
+        </a>
 
-        <div className="flex flex-wrap gap-3">
-          <a
-            href={whatsappUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-2 px-5 py-3 rounded-xl bg-[#25D366] text-white font-semibold text-sm hover:bg-[#1ebe5d] transition-colors"
-          >
-            <MessageCircle className="w-4 h-4" />
-            Enquire on WhatsApp
-          </a>
+        <a
+          href={`tel:+${phoneNumber}`}
+          className="inline-flex items-center justify-center px-8 py-3 border border-[var(--color-border-strong)] text-[var(--color-text)] uppercase tracking-widest text-xs font-medium rounded-sm hover:-translate-y-0.5 hover:bg-[var(--color-surface)] transition-all duration-300 ease-out"
+        >
+          Call Nexus Tyre
+        </a>
 
-          <a
-            href={`tel:+${phoneNumber}`}
-            className={cn(
-              "flex items-center gap-2 px-5 py-3 rounded-xl font-semibold text-sm border transition-colors",
-              variant === "light"
-                ? "border-[var(--color-primary)] text-[var(--color-primary)] hover:bg-[var(--color-primary)]/5"
-                : "border-white/30 text-white hover:bg-white/10"
-            )}
-          >
-            <Phone className="w-4 h-4" />
-            Call Nexus Tyre
-          </a>
-
-          <Link
-            href="/contact"
-            className={cn(
-              "flex items-center gap-2 px-5 py-3 rounded-xl font-semibold text-sm transition-colors",
-              variant === "light"
-                ? "bg-[var(--color-primary)] text-white hover:bg-[var(--color-primary-dark)]"
-                : "bg-white/10 text-white hover:bg-white/20 border border-white/20"
-            )}
-          >
-            Contact Us <ArrowRight className="w-4 h-4" />
-          </Link>
-        </div>
+        <Link
+          href="/contact"
+          className="inline-flex items-center justify-center px-8 py-3 bg-[var(--color-dark-section)] text-[var(--color-dark-text)] uppercase tracking-widest text-xs font-medium rounded-sm hover:-translate-y-0.5 hover:bg-black transition-all duration-300 ease-out"
+        >
+          Contact Us &rarr;
+        </Link>
       </div>
     </section>
   );

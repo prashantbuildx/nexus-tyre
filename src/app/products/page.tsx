@@ -16,8 +16,8 @@ export default function ProductsPage() {
   const categories = getAllCategories();
 
   return (
-    <div className="py-8 md:py-12 bg-[var(--color-bg)] min-h-screen">
-      <div className="container-site space-y-8">
+    <div className="bg-[var(--color-bg)] min-h-screen text-[var(--color-text)]">
+      <div className="container-site space-y-16 md:space-y-24 py-16 md:py-24">
         {/* Navigation Breadcrumbs */}
         <Breadcrumbs
           items={[
@@ -27,27 +27,29 @@ export default function ProductsPage() {
         />
 
         {/* Page Title & Intro */}
-        <div className="space-y-3">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[var(--color-primary)]/10 text-[var(--color-primary)] text-xs font-bold uppercase tracking-wider">
-            Commercial & Retail Catalog
-          </div>
-          <h1 className="text-3xl md:text-4xl font-extrabold text-[var(--color-text)] tracking-tight">
+        <div className="space-y-8 animate-fade-in-up">
+          <span className="text-[10px] tracking-[0.2em] uppercase font-medium text-[var(--color-text-muted)]">
+            Our Collection
+          </span>
+          <h1 className="text-5xl md:text-7xl font-serif text-[var(--color-text)] tracking-tight leading-none max-w-4xl">
             Product Catalogue
           </h1>
-          <p className="text-base md:text-lg text-[var(--color-muted)] max-w-3xl leading-relaxed">
+          <p className="text-lg md:text-xl text-[var(--color-text-muted)] max-w-2xl leading-relaxed">
             High-grade electric vehicles, industrial utility haulers, performance tyres, power storage systems, and essential components engineered for commercial endurance and Indian operating conditions.
           </p>
         </div>
 
         {/* Interactive Catalog View */}
-        <ProductCatalogView
-          products={products}
-          categories={categories}
-          initialCategory="all"
-        />
+        <div className="animate-fade-in-up pt-8 border-t border-[var(--color-border)]">
+          <ProductCatalogView
+            products={products}
+            categories={categories}
+            initialCategory="all"
+          />
+        </div>
 
         {/* Contact Banner */}
-        <div className="pt-10">
+        <div className="pt-16 animate-fade-in-up">
           <ContactCTA
             title="Need Bulk Pricing or Custom Technical Specifications?"
             subtitle="Our commercial supply team assists fleet operators, institutional buyers, and dealers with tailored quotes and supply contracts."

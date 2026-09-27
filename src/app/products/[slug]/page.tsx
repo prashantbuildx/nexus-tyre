@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import { CheckCircle2, ShieldCheck, Truck, Headphones, ChevronRight, ArrowLeft } from "lucide-react";
+import { CheckCircle2, ShieldCheck, Truck, Headphones, ChevronRight, ArrowLeft, ArrowRight } from "lucide-react";
 import {
   getProductBySlug,
   getAllProductSlugs,
@@ -71,41 +71,43 @@ export default async function ProductDetailPage({ params }: ProductPageProps) {
   ];
 
   return (
-    <div className="py-8 md:py-12 bg-[var(--color-bg)] min-h-screen">
-      <div className="container-site space-y-10">
-        {/* Navigation Breadcrumbs */}
-        <Breadcrumbs items={breadcrumbs} />
-
-        {/* Back link */}
-        <div>
-          <Link
-            href="/products"
-            className="inline-flex items-center gap-1.5 text-xs font-semibold text-[var(--color-muted)] hover:text-[var(--color-primary)] transition-colors"
-          >
-            <ArrowLeft className="w-3.5 h-3.5" />
-            <span>Back to All Products</span>
-          </Link>
+    <div className="bg-[var(--color-bg)] min-h-screen text-[var(--color-text)]">
+      <div className="container-site space-y-16 md:space-y-24 py-16 md:py-24">
+        {/* Navigation & Breadcrumbs */}
+        <div className="space-y-4">
+          <Breadcrumbs items={breadcrumbs} />
+          <div>
+            <Link
+              href="/products"
+              className="inline-flex items-center gap-2 text-xs uppercase tracking-widest font-medium text-[var(--color-text-muted)] hover:text-[var(--color-text)] hover:-translate-x-1 transition-all"
+            >
+              <ArrowLeft className="w-3 h-3" />
+              <span>Back to All Products</span>
+            </Link>
+          </div>
         </div>
 
         {/* Main Product Section: Gallery & Details */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 bg-white rounded-3xl p-6 sm:p-8 lg:p-10 border border-[var(--color-border)] shadow-sm">
+        <div className="flex flex-col lg:flex-row gap-16 lg:gap-24 items-start animate-fade-in-up">
           {/* Left Column: Gallery */}
-          <div className="lg:col-span-6">
-            <ProductGallery
-              images={product.images}
-              productName={product.name}
-            />
+          <div className="lg:w-1/2 w-full">
+            <div className="overflow-hidden border border-[var(--color-border)]">
+              <ProductGallery
+                images={product.images}
+                productName={product.name}
+              />
+            </div>
           </div>
 
           {/* Right Column: Information & Actions */}
-          <div className="lg:col-span-6 flex flex-col justify-between space-y-6">
-            <div className="space-y-4">
+          <div className="lg:w-1/2 w-full flex flex-col space-y-10">
+            <div className="space-y-6">
               {/* Badges */}
-              <div className="flex flex-wrap items-center gap-2">
+              <div className="flex flex-wrap items-center gap-3">
                 {category && (
                   <Link
                     href={`/categories/${category.slug}`}
-                    className="inline-flex items-center px-3 py-1 rounded-full bg-[var(--color-primary)]/10 text-[var(--color-primary)] text-xs font-bold uppercase tracking-wider hover:bg-[var(--color-primary)]/15 transition-colors"
+                    className="inline-flex items-center text-[10px] uppercase tracking-[0.2em] font-medium text-[var(--color-text-muted)] hover:text-[var(--color-text)] transition-colors"
                   >
                     {category.name}
                   </Link>
@@ -113,29 +115,24 @@ export default async function ProductDetailPage({ params }: ProductPageProps) {
                 {product.availability && (
                   <ProductAvailability availability={product.availability} />
                 )}
-                {product.featured && (
-                  <span className="inline-flex items-center px-2.5 py-0.5 rounded-full bg-amber-500/10 text-amber-600 text-xs font-semibold">
-                    Featured Model
-                  </span>
-                )}
               </div>
 
               {/* Title & Brand/Model */}
-              <div>
-                <h1 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[var(--color-text)] tracking-tight leading-tight">
+              <div className="space-y-4">
+                <h1 className="text-5xl md:text-6xl font-serif text-[var(--color-text)] tracking-tight leading-none">
                   {product.name}
                 </h1>
                 {(product.brand || product.model) && (
-                  <p className="text-sm font-medium text-[var(--color-muted)] mt-1">
-                    {product.brand && <span>Brand: <strong className="text-[var(--color-text)]">{product.brand}</strong></span>}
-                    {product.brand && product.model && <span> • </span>}
-                    {product.model && <span>Model: <strong className="text-[var(--color-text)]">{product.model}</strong></span>}
+                  <p className="text-xs uppercase tracking-widest text-[var(--color-text-muted)] pt-2">
+                    {product.brand && <span>Brand: <strong className="text-[var(--color-text)] font-medium">{product.brand}</strong></span>}
+                    {product.brand && product.model && <span className="mx-2">|</span>}
+                    {product.model && <span>Model: <strong className="text-[var(--color-text)] font-medium">{product.model}</strong></span>}
                   </p>
                 )}
               </div>
 
               {/* Price */}
-              <div className="py-2">
+              <div className="py-2 text-2xl font-serif text-[var(--color-text)]">
                 <ProductPrice
                   priceType={product.priceType}
                   price={product.price}
@@ -145,22 +142,19 @@ export default async function ProductDetailPage({ params }: ProductPageProps) {
               </div>
 
               {/* Short Description */}
-              <p className="text-base text-[var(--color-text-secondary)] leading-relaxed">
+              <p className="text-lg text-[var(--color-text-muted)] leading-relaxed">
                 {product.shortDescription}
               </p>
 
               {/* Quick Spec Highlights */}
               {product.specifications.length > 0 && (
-                <div className="grid grid-cols-2 gap-2.5 pt-2">
+                <div className="grid grid-cols-2 gap-6 pt-6 border-t border-[var(--color-border)]">
                   {product.specifications.slice(0, 4).map((spec, i) => (
-                    <div
-                      key={i}
-                      className="p-3 rounded-xl bg-[var(--color-surface)] border border-[var(--color-border)] flex flex-col"
-                    >
-                      <span className="text-[11px] font-semibold uppercase text-[var(--color-muted)] tracking-wider">
+                    <div key={i} className="flex flex-col space-y-1">
+                      <span className="text-[10px] uppercase tracking-[0.15em] text-[var(--color-text-muted)]">
                         {spec.label}
                       </span>
-                      <span className="text-sm font-bold text-[var(--color-text)] mt-0.5 truncate">
+                      <span className="text-lg font-serif text-[var(--color-text)] truncate">
                         {spec.value}
                       </span>
                     </div>
@@ -170,8 +164,7 @@ export default async function ProductDetailPage({ params }: ProductPageProps) {
             </div>
 
             {/* CTA and Commercial Highlights */}
-            <div className="space-y-6 pt-4 border-t border-[var(--color-border)]">
-              {/* Action Buttons */}
+            <div className="space-y-8 pt-8 border-t border-[var(--color-border)]">
               <ProductActions
                 productName={product.name}
                 categoryName={category?.name || "Product"}
@@ -179,18 +172,18 @@ export default async function ProductDetailPage({ params }: ProductPageProps) {
               />
 
               {/* Commercial Assurance Highlights */}
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 p-4 rounded-2xl bg-[var(--color-surface)] border border-[var(--color-border)] text-xs">
-                <div className="flex items-center gap-2.5 text-[var(--color-text-secondary)]">
-                  <ShieldCheck className="w-5 h-5 text-[var(--color-primary)] shrink-0" />
-                  <span>Quality Inspected & Commercial Grade</span>
+              <div className="flex flex-col space-y-4 pt-8 border-t border-[var(--color-border)] text-sm">
+                <div className="flex items-center gap-4 text-[var(--color-text-muted)]">
+                  <ShieldCheck className="w-5 h-5 shrink-0" />
+                  <span className="leading-relaxed">Quality Inspected & Commercial Grade</span>
                 </div>
-                <div className="flex items-center gap-2.5 text-[var(--color-text-secondary)]">
-                  <Truck className="w-5 h-5 text-[var(--color-primary)] shrink-0" />
-                  <span>Direct Delivery & Wholesale Logistics</span>
+                <div className="flex items-center gap-4 text-[var(--color-text-muted)]">
+                  <Truck className="w-5 h-5 shrink-0" />
+                  <span className="leading-relaxed">Direct Delivery & Wholesale Logistics</span>
                 </div>
-                <div className="flex items-center gap-2.5 text-[var(--color-text-secondary)]">
-                  <Headphones className="w-5 h-5 text-[var(--color-primary)] shrink-0" />
-                  <span>Dedicated B2B Support & Assistance</span>
+                <div className="flex items-center gap-4 text-[var(--color-text-muted)]">
+                  <Headphones className="w-5 h-5 shrink-0" />
+                  <span className="leading-relaxed">Dedicated B2B Support & Assistance</span>
                 </div>
               </div>
             </div>
@@ -198,26 +191,25 @@ export default async function ProductDetailPage({ params }: ProductPageProps) {
         </div>
 
         {/* Detailed Description & Full Specifications */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+        <div className="flex flex-col lg:flex-row gap-16 lg:gap-24 animate-fade-in-up border-t border-[var(--color-border)] pt-16">
           {/* Detailed Overview */}
-          <div className="lg:col-span-7 bg-white rounded-3xl p-6 sm:p-8 border border-[var(--color-border)] shadow-sm space-y-4">
-            <h2 className="text-xl font-bold text-[var(--color-text)] flex items-center gap-2">
-              <CheckCircle2 className="w-5 h-5 text-[var(--color-primary)]" />
-              <span>Product Overview & Capabilities</span>
+          <div className="lg:w-7/12 space-y-8">
+            <h2 className="text-3xl md:text-4xl font-serif text-[var(--color-text)] tracking-tight leading-none">
+              Product Overview & Capabilities
             </h2>
-            <div className="text-[var(--color-text-secondary)] text-sm sm:text-base leading-relaxed space-y-4 whitespace-pre-line">
+            <div className="text-lg text-[var(--color-text-muted)] leading-relaxed space-y-6 whitespace-pre-line">
               {product.description}
             </div>
 
             {product.tags && product.tags.length > 0 && (
-              <div className="pt-4 border-t border-[var(--color-border)] flex flex-wrap gap-1.5 items-center">
-                <span className="text-xs font-semibold text-[var(--color-muted)] mr-2">
+              <div className="pt-8 border-t border-[var(--color-border)] flex flex-wrap gap-3 items-center">
+                <span className="text-[10px] uppercase tracking-[0.15em] text-[var(--color-text-muted)] mr-2">
                   Keywords:
                 </span>
                 {product.tags.map((tag) => (
                   <span
                     key={tag}
-                    className="px-2.5 py-1 rounded-md bg-[var(--color-surface-2)] text-xs text-[var(--color-muted)] font-medium"
+                    className="text-[11px] text-[var(--color-text)] font-medium uppercase tracking-widest"
                   >
                     #{tag}
                   </span>
@@ -227,14 +219,21 @@ export default async function ProductDetailPage({ params }: ProductPageProps) {
           </div>
 
           {/* Technical Specifications */}
-          <div className="lg:col-span-5 bg-white rounded-3xl p-6 sm:p-8 border border-[var(--color-border)] shadow-sm space-y-4">
-            <h2 className="text-xl font-bold text-[var(--color-text)]">
-              Technical Specifications
+          <div className="lg:w-5/12 space-y-8">
+            <h2 className="text-3xl md:text-4xl font-serif text-[var(--color-text)] tracking-tight leading-none">
+              Technical Specs
             </h2>
             {product.specifications.length > 0 ? (
-              <ProductSpecifications specifications={product.specifications} />
+              <div className="space-y-0 border-t border-[var(--color-border)]">
+                {product.specifications.map((spec, index) => (
+                  <div key={index} className="flex justify-between items-center border-b border-[var(--color-border)] py-4">
+                    <span className="text-xs uppercase tracking-widest text-[var(--color-text-muted)]">{spec.label}</span>
+                    <span className="text-base text-[var(--color-text)] text-right">{spec.value}</span>
+                  </div>
+                ))}
+              </div>
             ) : (
-              <p className="text-sm text-[var(--color-muted)]">
+              <p className="text-lg text-[var(--color-text-muted)] leading-relaxed">
                 Detailed technical specifications and custom modifications are available on direct enquiry.
               </p>
             )}
@@ -243,26 +242,29 @@ export default async function ProductDetailPage({ params }: ProductPageProps) {
 
         {/* Related Products */}
         {relatedProducts.length > 0 && (
-          <div className="space-y-6 pt-6">
-            <div className="flex items-center justify-between">
-              <div>
-                <h3 className="text-2xl font-bold text-[var(--color-text)]">
+          <div className="space-y-12 animate-fade-in-up border-t border-[var(--color-border)] pt-16">
+            <div className="flex flex-col md:flex-row items-end justify-between gap-6">
+              <div className="space-y-4 max-w-2xl">
+                <span className="text-[10px] uppercase tracking-[0.2em] font-medium text-[var(--color-text-muted)]">
+                  More Options
+                </span>
+                <h3 className="text-4xl md:text-5xl font-serif text-[var(--color-text)] tracking-tight leading-none">
                   Related Products
                 </h3>
-                <p className="text-sm text-[var(--color-muted)]">
+                <p className="text-lg text-[var(--color-text-muted)] leading-relaxed">
                   Other options and complementary equipment in this category
                 </p>
               </div>
               <Link
                 href={category ? `/categories/${category.slug}` : "/products"}
-                className="flex items-center gap-1 text-sm font-semibold text-[var(--color-primary)] hover:underline"
+                className="inline-flex items-center gap-2 text-xs uppercase tracking-widest font-medium text-[var(--color-text)] hover:text-[var(--color-accent)] hover:gap-3 transition-all"
               >
                 <span>View More</span>
-                <ChevronRight className="w-4 h-4" />
+                <ArrowRight className="w-4 h-4" />
               </Link>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
               {relatedProducts.map((p) => (
                 <ProductCard
                   key={p.id}
@@ -273,14 +275,14 @@ export default async function ProductDetailPage({ params }: ProductPageProps) {
             </div>
           </div>
         )}
+      </div>
 
-        {/* Bottom CTA */}
-        <div className="pt-6">
-          <ContactCTA
-            title={`Looking for Quotes on ${product.name}?`}
-            subtitle="Connect directly with our commercial desk for volume pricing, compatibility advice, and delivery schedules."
-          />
-        </div>
+      {/* Bottom CTA */}
+      <div className="animate-fade-in-up">
+        <ContactCTA
+          title={`Looking for Quotes on ${product.name}?`}
+          subtitle="Connect directly with our commercial desk for volume pricing, compatibility advice, and delivery schedules."
+        />
       </div>
     </div>
   );

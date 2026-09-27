@@ -33,47 +33,42 @@ export function Footer() {
     : null;
 
   return (
-    <footer
-      style={{ background: "var(--color-dark)" }}
-      className="text-white"
-    >
+    <footer className="bg-[var(--color-dark-section)] text-[var(--color-dark-text)]">
       {/* CTA Band */}
       <div className="border-b border-white/10">
-        <div className="container-site py-10">
-          <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
-            <div>
-              <p className="text-[var(--color-muted-light)] text-sm mb-1">
-                Looking for a specific product?
-              </p>
-              <h2 className="text-h3 text-white">Talk to Nexus Tyre.</h2>
+        <div className="container-site py-12">
+          <div className="flex flex-col md:flex-row md:items-center justify-between gap-8">
+            <div className="space-y-2">
+              <span className="text-[10px] tracking-[0.2em] uppercase font-medium text-white/50">
+                Direct Contact
+              </span>
+              <h2 className="text-3xl font-serif text-[var(--color-dark-text)] tracking-tight">Talk to Nexus Tyre</h2>
             </div>
-            <div className="flex flex-wrap gap-3">
+            <div className="flex flex-wrap gap-4">
               {whatsappUrl && (
                 <a
                   href={whatsappUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2 px-5 py-2.5 rounded-lg bg-[#25D366] text-white font-medium text-sm hover:bg-[#1ebe5d] transition-colors"
+                  className="inline-flex items-center justify-center px-6 py-3 bg-[var(--color-accent)] text-[var(--color-dark-text)] uppercase tracking-widest text-xs font-medium rounded-sm hover:-translate-y-0.5 hover:bg-[var(--color-accent-dark)] transition-all duration-300 ease-out"
                 >
-                  <MessageCircle className="w-4 h-4" />
-                  Enquire on WhatsApp
+                  Enquire on WhatsApp &rarr;
                 </a>
               )}
               {hasPhone && (
                 <a
                   href={`tel:${siteConfig.contact.phone}`}
-                  className="flex items-center gap-2 px-5 py-2.5 rounded-lg border border-white/20 text-white font-medium text-sm hover:bg-white/10 transition-colors"
+                  className="inline-flex items-center justify-center px-6 py-3 border border-white/20 text-[var(--color-dark-text)] uppercase tracking-widest text-xs font-medium rounded-sm hover:-translate-y-0.5 hover:bg-white/5 transition-all duration-300 ease-out"
                 >
-                  <Phone className="w-4 h-4" />
-                  Call Nexus Tyre
+                  Call Us
                 </a>
               )}
               {!whatsappUrl && !hasPhone && (
                 <Link
                   href="/contact"
-                  className="flex items-center gap-2 px-5 py-2.5 rounded-lg bg-[var(--color-accent)] text-[var(--color-primary)] font-medium text-sm hover:bg-[var(--color-accent-dark)] transition-colors"
+                  className="inline-flex items-center justify-center px-6 py-3 bg-[var(--color-accent)] text-[var(--color-dark-text)] uppercase tracking-widest text-xs font-medium rounded-sm hover:-translate-y-0.5 hover:bg-[var(--color-accent-dark)] transition-all duration-300 ease-out"
                 >
-                  Contact Us <ArrowRight className="w-4 h-4" />
+                  Contact Us &rarr;
                 </Link>
               )}
             </div>
@@ -82,21 +77,21 @@ export function Footer() {
       </div>
 
       {/* Main Footer */}
-      <div className="container-site py-12">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
+      <div className="container-site py-16">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
           {/* Brand Column */}
-          <div>
+          <div className="space-y-6">
             <BrandLogo variant="light" linkable={true} />
-            <p className="mt-4 text-sm text-white/60 leading-relaxed max-w-xs">
+            <p className="text-sm text-white/60 leading-relaxed max-w-xs pr-4">
               {siteConfig.description}
             </p>
 
             {/* Contact Info */}
-            <div className="mt-6 flex flex-col gap-3">
+            <div className="flex flex-col gap-4 pt-4">
               {hasPhone && (
                 <a
                   href={`tel:${siteConfig.contact.phone}`}
-                  className="flex items-center gap-2 text-sm text-white/70 hover:text-white transition-colors"
+                  className="flex items-center gap-3 text-xs uppercase tracking-widest text-white/70 hover:text-white transition-colors"
                 >
                   <Phone className="w-4 h-4 flex-shrink-0" />
                   {siteConfig.contact.phone}
@@ -105,14 +100,14 @@ export function Footer() {
               {hasEmail && (
                 <a
                   href={`mailto:${siteConfig.contact.email}`}
-                  className="flex items-center gap-2 text-sm text-white/70 hover:text-white transition-colors"
+                  className="flex items-center gap-3 text-xs uppercase tracking-widest text-white/70 hover:text-white transition-colors"
                 >
                   <Mail className="w-4 h-4 flex-shrink-0" />
                   {siteConfig.contact.email}
                 </a>
               )}
               {hasAddress && (
-                <div className="flex items-start gap-2 text-sm text-white/60">
+                <div className="flex items-start gap-3 text-xs uppercase tracking-wider text-white/50 leading-relaxed">
                   <MapPin className="w-4 h-4 flex-shrink-0 mt-0.5" />
                   <span>
                     {siteConfig.location.address}
@@ -127,15 +122,15 @@ export function Footer() {
 
           {/* Products Column */}
           <div>
-            <h3 className="text-sm font-semibold text-white mb-4 uppercase tracking-wider">
+            <h3 className="text-[10px] font-medium text-white/50 mb-6 uppercase tracking-[0.2em]">
               Products
             </h3>
-            <ul className="flex flex-col gap-2.5">
+            <ul className="flex flex-col gap-4">
               {productLinks.map((link) => (
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-sm text-white/60 hover:text-white transition-colors"
+                    className="text-xs uppercase tracking-widest text-white/70 hover:text-white transition-colors"
                   >
                     {link.label}
                   </Link>
@@ -146,15 +141,15 @@ export function Footer() {
 
           {/* Company Column */}
           <div>
-            <h3 className="text-sm font-semibold text-white mb-4 uppercase tracking-wider">
+            <h3 className="text-[10px] font-medium text-white/50 mb-6 uppercase tracking-[0.2em]">
               Company
             </h3>
-            <ul className="flex flex-col gap-2.5">
+            <ul className="flex flex-col gap-4">
               {companyLinks.map((link) => (
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-sm text-white/60 hover:text-white transition-colors"
+                    className="text-xs uppercase tracking-widest text-white/70 hover:text-white transition-colors"
                   >
                     {link.label}
                   </Link>
@@ -165,10 +160,10 @@ export function Footer() {
 
           {/* Hours Column */}
           <div>
-            <h3 className="text-sm font-semibold text-white mb-4 uppercase tracking-wider">
+            <h3 className="text-[10px] font-medium text-white/50 mb-6 uppercase tracking-[0.2em]">
               Business Hours
             </h3>
-            <div className="flex flex-col gap-2 text-sm text-white/60">
+            <div className="flex flex-col gap-3 text-xs uppercase tracking-widest text-white/70">
               <p>{siteConfig.businessHours.weekdays}</p>
               <p>Sunday: {siteConfig.businessHours.sunday}</p>
             </div>
@@ -178,10 +173,9 @@ export function Footer() {
                 href={siteConfig.location.mapsUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-5 inline-flex items-center gap-2 text-sm text-[var(--color-accent)] hover:text-[var(--color-accent-dark)] transition-colors font-medium"
+                className="mt-8 inline-flex items-center gap-2 text-xs uppercase tracking-widest text-[var(--color-accent)] hover:text-white transition-colors"
               >
-                <MapPin className="w-4 h-4" />
-                Get Directions
+                Get Directions <ArrowRight className="w-3 h-3" />
               </a>
             )}
           </div>
@@ -190,11 +184,11 @@ export function Footer() {
 
       {/* Bottom Bar */}
       <div className="border-t border-white/10">
-        <div className="container-site py-5 flex flex-col sm:flex-row items-center justify-between gap-3 text-sm text-white/40">
+        <div className="container-site py-6 flex flex-col md:flex-row items-center justify-between gap-4 text-[10px] uppercase tracking-widest text-white/40">
           <p>
             &copy; {new Date().getFullYear()} Nexus Tyre. All rights reserved.
           </p>
-          <p>Product information is subject to change. Contact us for current availability.</p>
+          <p className="text-center md:text-right">Product information is subject to change. <br className="md:hidden" />Contact us for current availability.</p>
         </div>
       </div>
     </footer>

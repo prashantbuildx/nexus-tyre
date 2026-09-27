@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import { Phone, MessageCircle } from "lucide-react";
 import { siteConfig } from "@/config/site-config";
 import { isConfigured } from "@/lib/contact/phone";
 import {
@@ -36,8 +35,8 @@ export function ProductActions({
   return (
     <div
       className={cn(
-        "flex gap-3",
-        layout === "horizontal" ? "flex-row flex-wrap" : "flex-col",
+        "flex gap-4",
+        layout === "horizontal" ? "flex-row flex-wrap items-center" : "flex-col",
         className
       )}
     >
@@ -46,31 +45,29 @@ export function ProductActions({
           href={whatsappUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-[#25D366] text-white font-semibold text-sm hover:bg-[#1ebe5d] transition-colors"
+          className="inline-flex items-center justify-center px-6 py-3 bg-[var(--color-accent)] text-[var(--color-dark-text)] uppercase tracking-widest text-xs font-medium rounded-sm hover:-translate-y-0.5 hover:bg-[var(--color-accent-dark)] transition-all duration-300 ease-out"
           aria-label={`Enquire about ${productName} on WhatsApp`}
         >
-          <MessageCircle className="w-4 h-4" />
-          Enquire on WhatsApp
+          Enquire Now &rarr;
         </a>
       )}
 
       {hasPhone && (
         <a
           href={`tel:${siteConfig.contact.phone}`}
-          className="flex items-center justify-center gap-2 px-5 py-3 rounded-xl border-2 border-[var(--color-primary)] text-[var(--color-primary)] font-semibold text-sm hover:bg-[var(--color-primary)]/5 transition-colors"
+          className="inline-flex items-center justify-center px-6 py-3 border border-[var(--color-border-strong)] text-[var(--color-text)] uppercase tracking-widest text-xs font-medium rounded-sm hover:-translate-y-0.5 hover:bg-[var(--color-surface)] transition-all duration-300 ease-out"
           aria-label="Call Nexus Tyre"
         >
-          <Phone className="w-4 h-4" />
-          Call Nexus Tyre
+          Call Us
         </a>
       )}
 
       {!whatsappUrl && !hasPhone && (
         <Link
           href="/contact"
-          className="flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-[var(--color-primary)] text-white font-semibold text-sm hover:bg-[var(--color-primary-dark)] transition-colors"
+          className="inline-flex items-center justify-center px-6 py-3 bg-[var(--color-accent)] text-[var(--color-dark-text)] uppercase tracking-widest text-xs font-medium rounded-sm hover:-translate-y-0.5 hover:bg-[var(--color-accent-dark)] transition-all duration-300 ease-out"
         >
-          Contact Nexus Tyre
+          Contact Us &rarr;
         </Link>
       )}
     </div>

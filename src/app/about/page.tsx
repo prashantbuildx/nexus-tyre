@@ -72,8 +72,8 @@ const WHY_CHOOSE_US = [
 
 export default function AboutPage() {
   return (
-    <div className="py-8 md:py-16 bg-[var(--color-bg)] min-h-screen">
-      <div className="container-site space-y-16">
+    <div className="bg-[var(--color-bg)] min-h-screen text-[var(--color-text)]">
+      <div className="container-site space-y-24 md:space-y-32 py-16 md:py-24">
         {/* Navigation Breadcrumbs */}
         <Breadcrumbs
           items={[
@@ -83,105 +83,99 @@ export default function AboutPage() {
         />
 
         {/* Hero Section */}
-        <div className="max-w-4xl space-y-6">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[var(--color-primary)]/10 text-[var(--color-primary)] text-xs font-bold uppercase tracking-wider">
-            About Nexus Tyre
+        <div className="flex flex-col md:flex-row gap-12 md:gap-24 animate-fade-in-up items-center">
+          <div className="md:w-5/12 flex flex-col justify-center space-y-8">
+            <span className="text-[10px] tracking-[0.2em] uppercase font-medium text-[var(--color-text-muted)]">
+              Our Story
+            </span>
+            <h1 className="text-5xl md:text-7xl font-serif text-[var(--color-text)] tracking-tight leading-none">
+              Powering Transit
+            </h1>
+            <p className="text-lg md:text-xl text-[var(--color-text-muted)] leading-relaxed">
+              Nexus Tyre is an established supplier and distribution partner in the electric mobility, automotive tyre, and industrial equipment sectors. We deliver dependable, cost-efficient, and durable equipment to commercial operators, fleet owners, municipalities, and retail customers.
+            </p>
           </div>
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-[var(--color-text)] tracking-tight leading-tight">
-            Powering Sustainable Transit & Industrial Utility Across India
-          </h1>
-          <p className="text-lg md:text-xl text-[var(--color-muted)] leading-relaxed">
-            Nexus Tyre is an established supplier and distribution partner in the electric mobility, automotive tyre, and industrial equipment sectors. We deliver dependable, cost-efficient, and durable equipment to commercial operators, fleet owners, municipalities, and retail customers.
-          </p>
+          <div className="md:w-7/12 border border-[var(--color-border)] overflow-hidden bg-[var(--color-surface)] flex items-center justify-center p-12 min-h-[500px]">
+             {/* Text-based stylized placeholder maintaining the premium look since we lack images */}
+             <div className="text-4xl font-serif text-[var(--color-text)] opacity-10 uppercase tracking-widest hover:scale-105 transition-transform duration-700 ease-out">
+                Nexus Tyre
+             </div>
+          </div>
         </div>
 
         {/* Key Stats Bar */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 border-y border-[var(--color-border)] py-12 animate-fade-in-up">
           {STATS.map((stat, i) => (
-            <div
-              key={i}
-              className="p-6 rounded-2xl bg-white border border-[var(--color-border)] shadow-sm text-center sm:text-left space-y-1"
-            >
-              <div className="text-3xl sm:text-4xl font-black text-[var(--color-primary)] tracking-tight">
+            <div key={i} className="flex flex-col space-y-2">
+              <div className="text-4xl md:text-5xl font-serif text-[var(--color-text)] tracking-tight">
                 {stat.value}
               </div>
-              <div className="font-bold text-sm sm:text-base text-[var(--color-text)]">
+              <div className="font-medium text-[10px] uppercase tracking-[0.15em] text-[var(--color-text)]">
                 {stat.label}
               </div>
-              <div className="text-xs text-[var(--color-muted)]">
+              <div className="text-sm text-[var(--color-text-muted)] leading-relaxed">
                 {stat.desc}
               </div>
             </div>
           ))}
         </div>
 
-        {/* Mission & Vision Section */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
-          <div className="p-8 sm:p-10 rounded-3xl bg-white border border-[var(--color-border)] shadow-sm space-y-4 flex flex-col justify-between">
-            <div className="space-y-4">
-              <div className="w-12 h-12 rounded-2xl bg-[var(--color-primary)]/10 flex items-center justify-center text-[var(--color-primary)]">
-                <Target className="w-6 h-6" />
-              </div>
-              <h2 className="text-2xl font-bold text-[var(--color-text)]">
-                Our Mission
-              </h2>
-              <p className="text-[var(--color-text-secondary)] leading-relaxed">
-                To accelerate India's transition to electric mobility and clean municipal infrastructure by providing accessible, rugged, and high-performance commercial vehicles, durable tyres, and energy storage solutions backed by dependable aftermarket support.
-              </p>
+        {/* Mission & Vision Section (Feature Sections Alternative Layout) */}
+        <div className="space-y-32 animate-fade-in-up">
+          <div className="flex flex-col md:flex-row gap-16 items-center">
+            <div className="md:w-1/2 space-y-8">
+               <h2 className="text-4xl md:text-5xl font-serif text-[var(--color-text)] tracking-tight leading-none">Our Mission</h2>
+               <p className="text-lg text-[var(--color-text-muted)] leading-relaxed">
+                 To accelerate India's transition to electric mobility and clean municipal infrastructure by providing accessible, rugged, and high-performance commercial vehicles, durable tyres, and energy storage solutions backed by dependable aftermarket support.
+               </p>
+               <div className="pt-6 border-t border-[var(--color-border)] flex items-center gap-2 text-[10px] font-medium text-[var(--color-text)] uppercase tracking-[0.15em]">
+                 <CheckCircle2 className="w-4 h-4" />
+                 Empowering Drivers & Enterprises
+               </div>
             </div>
-            <div className="pt-6 border-t border-[var(--color-border)] flex items-center gap-2 text-xs font-semibold text-[var(--color-primary)] uppercase tracking-wider">
-              <CheckCircle2 className="w-4 h-4" />
-              Empowering Drivers & Enterprises
+            <div className="md:w-1/2 border border-[var(--color-border)] overflow-hidden bg-[var(--color-surface)] flex items-center justify-center p-12 min-h-[400px]">
+               <Target className="w-16 h-16 text-[var(--color-text)] opacity-10 hover:scale-105 transition-transform duration-[800ms] ease-out" />
             </div>
           </div>
 
-          <div className="p-8 sm:p-10 rounded-3xl bg-gradient-to-br from-[var(--color-primary-dark)] to-[var(--color-primary)] text-white shadow-md space-y-4 flex flex-col justify-between">
-            <div className="space-y-4">
-              <div className="w-12 h-12 rounded-2xl bg-white/15 flex items-center justify-center text-white backdrop-blur-sm">
-                <Award className="w-6 h-6" />
-              </div>
-              <h2 className="text-2xl font-bold">Our Quality Standard</h2>
-              <p className="text-white/85 leading-relaxed">
-                Commercial vehicles and tyres endure severe stress daily. We prioritize robust build materials, reinforced suspension frameworks, high safety margins, and verified battery management standards so that our clients achieve maximum operating uptime and optimal return on investment.
-              </p>
+          <div className="flex flex-col md:flex-row-reverse gap-16 items-center">
+            <div className="md:w-1/2 space-y-8">
+               <h2 className="text-4xl md:text-5xl font-serif text-[var(--color-text)] tracking-tight leading-none">Our Quality Standard</h2>
+               <p className="text-lg text-[var(--color-text-muted)] leading-relaxed">
+                 Commercial vehicles and tyres endure severe stress daily. We prioritize robust build materials, reinforced suspension frameworks, high safety margins, and verified battery management standards so that our clients achieve maximum operating uptime and optimal return on investment.
+               </p>
+               <div className="pt-6 border-t border-[var(--color-border)] flex items-center gap-2 text-[10px] font-medium text-[var(--color-text)] uppercase tracking-[0.15em]">
+                 <ShieldCheck className="w-4 h-4" />
+                 Rigorous Mechanical Verification
+               </div>
             </div>
-            <div className="pt-6 border-t border-white/20 flex items-center gap-2 text-xs font-semibold text-[var(--color-accent)] uppercase tracking-wider">
-              <ShieldCheck className="w-4 h-4" />
-              Rigorous Mechanical Verification
+            <div className="md:w-1/2 border border-[var(--color-border)] overflow-hidden bg-[var(--color-surface)] flex items-center justify-center p-12 min-h-[400px]">
+               <Award className="w-16 h-16 text-[var(--color-text)] opacity-10 hover:scale-105 transition-transform duration-[800ms] ease-out" />
             </div>
           </div>
         </div>
 
         {/* Core Product Pillars */}
-        <div className="space-y-8">
-          <div className="text-center max-w-2xl mx-auto space-y-2">
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-[var(--color-text)]">
-              Comprehensive Product Portfolio
-            </h2>
-            <p className="text-sm sm:text-base text-[var(--color-muted)]">
-              Four dedicated product divisions built to address every commercial, transit, and municipal demand.
-            </p>
+        <div className="flex flex-col md:flex-row gap-16 animate-fade-in-up border-t border-[var(--color-border)] pt-24">
+          <div className="md:w-5/12 space-y-6">
+             <h2 className="text-4xl md:text-5xl font-serif text-[var(--color-text)] tracking-tight leading-none">Comprehensive Product Portfolio</h2>
+             <p className="text-lg text-[var(--color-text-muted)] leading-relaxed">
+               Four dedicated product divisions built to address every commercial, transit, and municipal demand.
+             </p>
           </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="md:w-7/12 flex flex-col">
             {PILLARS.map((pillar, i) => {
               const Icon = pillar.icon;
               return (
-                <div
-                  key={i}
-                  className="p-6 sm:p-8 rounded-2xl bg-white border border-[var(--color-border)] shadow-sm flex gap-4 sm:gap-5 items-start"
-                >
-                  <div className="w-12 h-12 rounded-2xl bg-[var(--color-primary)]/10 text-[var(--color-primary)] flex items-center justify-center shrink-0">
-                    <Icon className="w-6 h-6" />
+                <div key={i} className="group border-b border-[var(--color-border)] py-10 flex items-start gap-8 transition-colors duration-300 hover:bg-[var(--color-surface-soft)]">
+                  <div className="mt-1">
+                    <Icon className="w-6 h-6 text-[var(--color-text-muted)]" />
                   </div>
-                  <div className="space-y-2">
-                    <h3 className="text-lg font-bold text-[var(--color-text)]">
-                      {pillar.title}
-                    </h3>
-                    <p className="text-sm text-[var(--color-muted)] leading-relaxed">
-                      {pillar.desc}
-                    </p>
+                  <div className="flex-1 space-y-4">
+                    <h3 className="text-3xl font-serif text-[var(--color-text)] tracking-tight">{pillar.title}</h3>
+                    <p className="text-[var(--color-text-muted)] leading-relaxed">{pillar.desc}</p>
                   </div>
+                  <div className="text-2xl font-light text-[var(--color-text)] opacity-30 group-hover:opacity-100 transition-opacity">+</div>
                 </div>
               );
             })}
@@ -189,53 +183,44 @@ export default function AboutPage() {
         </div>
 
         {/* Why Choose Nexus Tyre */}
-        <div className="p-8 sm:p-12 rounded-3xl bg-white border border-[var(--color-border)] shadow-sm space-y-10">
-          <div className="max-w-2xl space-y-2">
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-[var(--color-text)]">
-              Why Commercial Buyers Rely On Us
-            </h2>
-            <p className="text-sm sm:text-base text-[var(--color-muted)]">
-              Tailored partnerships for logistics operators, dealership networks, and civic authorities.
-            </p>
+        <div className="flex flex-col md:flex-row gap-16 animate-fade-in-up border-t border-[var(--color-border)] pt-24">
+          <div className="md:w-5/12 space-y-6">
+             <h2 className="text-4xl md:text-5xl font-serif text-[var(--color-text)] tracking-tight leading-none">Why Commercial Buyers Rely On Us</h2>
+             <p className="text-lg text-[var(--color-text-muted)] leading-relaxed">
+               Tailored partnerships for logistics operators, dealership networks, and civic authorities.
+             </p>
+             <div className="pt-8">
+               <Link
+                 href="/contact"
+                 className="inline-flex items-center gap-3 px-8 py-3 bg-[var(--color-accent)] text-[var(--color-dark-text)] uppercase tracking-widest text-xs font-medium rounded-sm hover:-translate-y-0.5 hover:bg-[var(--color-accent-dark)] transition-all duration-300 ease-out"
+               >
+                 <span>Commercial Desk</span>
+                 <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
+               </Link>
+             </div>
           </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="md:w-7/12 flex flex-col">
             {WHY_CHOOSE_US.map((item, i) => (
-              <div key={i} className="flex gap-4 items-start">
-                <div className="w-8 h-8 rounded-xl bg-[var(--color-surface-2)] flex items-center justify-center text-[var(--color-primary)] font-bold text-sm shrink-0 border border-[var(--color-border)]">
-                  {i + 1}
+              <div key={i} className="border-b border-[var(--color-border)] py-10 flex items-start gap-8">
+                <div className="text-sm font-serif italic text-[var(--color-text-muted)] mt-1">
+                  0{i + 1}
                 </div>
-                <div className="space-y-1.5">
-                  <h3 className="font-bold text-base text-[var(--color-text)]">
-                    {item.title}
-                  </h3>
-                  <p className="text-sm text-[var(--color-muted)] leading-relaxed">
-                    {item.desc}
-                  </p>
+                <div className="flex-1 space-y-4">
+                  <h3 className="text-3xl font-serif text-[var(--color-text)] tracking-tight">{item.title}</h3>
+                  <p className="text-[var(--color-text-muted)] leading-relaxed">{item.desc}</p>
                 </div>
               </div>
             ))}
           </div>
-
-          <div className="pt-6 border-t border-[var(--color-border)] flex flex-col sm:flex-row items-center justify-between gap-4">
-            <span className="text-sm text-[var(--color-text-secondary)]">
-              Interested in becoming an authorized distributor or fleet supply partner?
-            </span>
-            <Link
-              href="/contact"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-[var(--color-primary)] text-white font-semibold text-sm hover:bg-[var(--color-primary-dark)] transition-colors shrink-0"
-            >
-              <span>Connect With Commercial Desk</span>
-              <ArrowRight className="w-4 h-4" />
-            </Link>
-          </div>
         </div>
 
         {/* Bottom CTA */}
-        <ContactCTA
-          title="Discuss Your Fleet or Equipment Requirements"
-          subtitle="Speak with our product experts to request specifications, arrange a visit, or obtain competitive commercial quotations."
-        />
+        <div className="animate-fade-in-up pt-12">
+           <ContactCTA
+             title="Discuss Your Fleet or Equipment Requirements"
+             subtitle="Speak with our product experts to request specifications, arrange a visit, or obtain competitive commercial quotations."
+           />
+        </div>
       </div>
     </div>
   );
